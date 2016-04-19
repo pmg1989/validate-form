@@ -1,0 +1,88 @@
+﻿<!Doctype html>
+<html>
+<head>
+    <title>用户注册</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link href="css/styles.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="wrapper">
+        <div id="login" class="page active">
+            <div class="main">
+                <div class="tab">
+                    <div class="tab-content">
+                        <div class="tab-pane active">
+                            <form class="form" id="form1" method="post" action="/">
+                                <div class="form-control">
+                                    <input id="phone" class="form-control" type="text" placeholder="请输入邮箱/手机号" check="required xishiqu_account" />
+                                    <div class="message">请输入邮箱/手机号</div>
+                                </div>
+                                <div class="form-control">
+                                    <input id="phone2" class="form-control" type="text" placeholder="请输入手机号" check="required mobile" />
+                                    <div class="message">请输入手机号</div>
+                                    <span class="btn send-code">获取验证码</span>
+                                </div>
+                                <div class="form-control">
+                                    <input id="email" class="form-control" type="text" placeholder="请输入邮箱" check="required email" />
+                                    <div class="message">请输入手机号</div>
+                                </div>
+                                <div class="form-control">
+                                    <input id="num" class="form-control" type="text" placeholder="请输入数量" check="required num" />
+                                    <div class="message">请输入手机号</div>
+                                </div>
+                                <div class="form-control">
+                                    <input id="password1" class="form-control" type="password" placeholder="请输入密码" check="required pwd1 length" min="6" max="12" />
+                                    <div class="message">请输入密码</div>
+                                </div>
+                                <div class="form-control">
+                                    <input id="password2" class="form-control" type="password" placeholder="请输入确认密码" check="required pwd2" />
+                                    <div class="message">请输入密码</div>
+                                </div>
+                                <input type="submit" class="btn btn-primary btn-block" value="注册" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/lib/zepto.min.js"></script>
+    <script src="js/validate-form.js"></script>
+    <script src="js/sms.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var validateParams = {
+                onChange: function (isValid, $elem, msg) {
+                    if (isValid) {
+                        $elem.next().removeClass("error");
+                    } else {
+                        $elem.focus().next().text(msg).addClass("error");
+                    }
+                }
+            };
+
+            $("#form1").on("submit", function () {
+                var isValid = $(this).ValidateForm(validateParams);
+                if (!isValid) {
+                    return false;
+                }
+                console.log("ok!");
+                return false;
+            });
+
+            $('.send-code').sms({
+                mobile: $('#phone2'),
+                validate: function ($ele) {
+                    var valid = $ele.ValidateForm(validateParams);
+                    return valid;
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
