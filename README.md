@@ -1,6 +1,6 @@
 #validate-form.js
 ##validate-form.js是什么?
-一个基于jQuery/zepto.js的强大的表单验证插件，可以完成所有的基本表单验证功能，并且功能可扩展。
+一个基于jQuery/zepto.js的表单验证插件，可以完成基本表单验证以及异步请求验证功能，并且功能可支持扩展。
 
 ##validate-form.js有哪些功能？
 
@@ -10,9 +10,37 @@
 * 支持`异步请求验证`功能
 * 支持可扩展的`特殊功能验证`功能
 
-##验证代码
+##HTML模板配置
+```html
+<form class="form" method="post" action="/">
+    <div class="form-control">
+        <input id="phone" type="text" placeholder="请输入手机号" check="required mobile"/>
+        <div class="message">请输入手机号</div>
+        <span class="btn send-code">获取验证码</span>
+    </div>
+    <div class="form-control">
+    <input id="email" type="text" placeholder="请输入邮箱" check="required email" />
+        <div class="message">请输入邮箱</div>
+    </div>
+    <div class="form-control">
+        <input id="num" type="text" placeholder="请输入数量" check="required num" />
+        <div class="message">请输入数量</div>
+    </div>
+    <div class="form-control">
+        <input id="password1" type="password" placeholder="请输入密码" check="required pwd1 length" min="6" max="12" />
+        <div class="message">请输入密码</div>
+    </div>
+    <div class="form-control">
+        <input id="password2" type="password" placeholder="请输入确认密码" check="required pwd2" />
+        <div class="message">请输入确认密码</div>
+    </div>
+    <input type="submit" class="btn btn-primary btn-block" value="注册" />
+</form>
+```
+##Form表单整体验证
 
 ```javascript
+//定义验证参数对象
 var validateParams = {
     //回调函数，当前表单验证通过以及不通过都会调用
     onChange: function (isValid, $elem, msg) {
@@ -29,6 +57,12 @@ var validateParams = {
         }
     }
 };
+//对form表单进行验证
+var validFalg = $("form").ValidateForm(validateParams);
+/*
+validFalg:false,验证未通过，无需处理，return false；拦表单提交即可
+validFalg:true,form验证通过，可进行表单提交了
+*/
 ```
 ##关于作者
 
