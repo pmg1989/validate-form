@@ -9,6 +9,7 @@
     *  密码验证、中国护照格式验证
 * 支持`异步请求验证`功能
 * 支持可扩展的`特殊功能验证`功能
+* 支持form表单`整体`验证以及input`单个`验证
 
 ##HTML模板配置
 ```html
@@ -64,6 +65,39 @@ validFalg:false,验证未通过，无需处理，return false；拦表单提交即可
 validFalg:true,form验证通过，可进行表单提交了
 */
 ```
+
+##input单个验证
+
+```javascript
+//发送验证码控件绑定事件
+$('.send-code').sms({
+    mobile: $('#phone'),//待验证的input元素
+    /*
+    sms的回调函数
+    $ele:待验证的元素，jQuery对象；
+    此回调必须return 一个bool类型的值，true：验证通过，false：验证不通过
+    */
+    validate: function ($ele) {
+        return $ele.ValidateForm(validateParams);
+    }
+});
+```
+
+##ajax异步请求验证
+
+ajaxvalid：必填参数，check属性值，必须且只能为ajaxvalid；
+
+ajaxurl:必填参数，异步请求的后台验证接口，可带url参数；
+
+ajaxtype:可选参数，值为post/get,默认值为post
+
+```html
+<div class="form-control">
+    <input id="phone2" type="text" placeholder="请输入邮箱/手机号"check="required mobile ajaxvalid" ajaxurl="http://www.cakeland.com/json.ashx?C=User&m=checkPhone" ajaxtype="post"/>
+    <div class="message">请输入邮箱/手机号</div>
+</div>
+```
+
 ##关于作者
 
 ```javascript
@@ -76,5 +110,5 @@ validFalg:true,form验证通过，可进行表单提交了
 ##问题反馈
 在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
 
-* 邮件(972401854@qq.com, （把#换成@）)
+* 邮件(972401854@qq.com)
 * QQ: 972401854
