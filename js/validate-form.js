@@ -21,7 +21,7 @@
             tips_xishiqu_account: '请输入西十区邮箱/手机号',
             tips_pwd2: '两次密码不一致',
             tips_length: '',
-            tips_ajax: '信息已经存在',
+            tips_ajaxvalid: '信息已经存在',
 
             //正则
             reg_email: /^\w+\@[a-zA-Z0-9]+\.[a-zA-Z]{2,4}$/i,  //验证邮箱
@@ -88,7 +88,7 @@
                     _flag = this.regMatch(_val, _match);
                     break;
                 case 'pwd1':
-                    pwd1 = _val; 
+                    pwd1 = _val;
                     _flag = true;
                     return _flag;//实时获取存储pwd1值,直接return true即可
                 case 'pwd2':
@@ -98,7 +98,7 @@
                     _flag = this.chekLength(_val, $elem);
                     break;
                 case 'ajaxvalid':
-                    _flag = this.ajaxValidate(_val, $elem.attr("ajaxurl"));
+                    _flag = this.ajaxValidate(_val, $elem);
                     break;
                 case 'xishiqu_account':
                     _flag = this.chekXishiquAccount(_val, this.opt.reg_mobile, this.opt.reg_email);
@@ -141,20 +141,40 @@
             }
             return result;
         },
-        ajaxValidate: function (value, url) {
+        ajaxValidate: function (value, $elem) {
+            function getPostParams(url) {
+                var vars = {}, hash;
+                var hashes = url.slice(url.indexOf('?') + 1).split('&');
+                for (var i = 0; i < hashes.length; i++) {
+                    hash = hashes[i].split('=');
+                    vars[hash[0]] = hash[1];
+                }
+                return vars;
+            }
+
             var isValid = false;
+            var type = ($elem.attr('ajaxtype') || 'POST').toUpperCase();
+            var url = $elem.attr('ajaxurl');
+            var _data = { value: value };
+            if (type == "POST") {
+                _data = $.extend(_data, getPostParams(url));
+                url = url.substr(0, url.indexOf('?'));
+            }
             $.ajax({
-                type: 'POST',
+                type: type,
                 url: url,
-                data: { value: value },
+                data: _data,
                 dataType: 'json',
                 timeout: 300,
                 async: false,
                 success: function (result) {
-                    this.opt.tips_ajax = result.Message;
-                    isValid = result.Success;
+                    if (result.msg) {
+                        _this.opt.tips_ajaxvalid = result.msg;
+                    }
+                    isValid = result.Status && result.Tag;
                 },
                 error: function (xhr, type) {
+                    console.log(arguments);
                 }
             })
             return isValid;
