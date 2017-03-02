@@ -1,4 +1,8 @@
 #validate-form.js
+
+##演示地址：
+https://pmg1989.github.io/validate-form
+
 ##validate-form.js是什么?
 一个基于jQuery/zepto.js的表单验证插件，可以完成基本表单验证以及异步请求验证功能，并且功能可支持扩展。
 
