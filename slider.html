@@ -119,6 +119,12 @@
             text-decoration: none;
         }
     </style>
+
+    <style>
+        .alert-danger {
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
@@ -132,8 +138,6 @@
                 </li>
                 <li><a href="#"><img src="https://img.xianghuanji.com/cms/51e33ff471e8bd8f7ae1dedac9b433064134.png"
                             lz-src="images/banner/2.jpg" width="640" height="260" /></a></li>
-                <!-- <li><a href="#"><img src="/images/load.jpg" lz-src="images/banner/4.jpg" width="640" height="260" /></a>
-                </li> -->
             </ul>
         </div>
 
@@ -142,6 +146,21 @@
         <div
             data-bind='component: { name: "pager", params: { count: totalCount, size: pageSize, no: curPage, btnCount: 4, show:getList } }'>
         </div>
+
+        <div data-bind="text:title,highLight:keyword"></div>
+        <div style="height: 1500px;"></div>
+        <div style="height: 300px;" data-bind="lazyLoad:true">
+            <img data-src="https://img.xianghuanji.com/cms/4ac67e660c585e6a8174d3f8d773e3c16200.png"
+                lz-src="images/banner/3.png" width="640" height="260" />
+        </div>
+        <div style="height: 300px;" data-bind="lazyLoad:true">
+            <img src="https://img.xianghuanji.com/cms/339b2bcc7878d380b1280657af3d8c943946.png"
+                lz-src="images/banner/1.jpg" width="640" height="260" />
+        </div>
+        <div style="height: 300px;" data-bind="lazyLoad:true">
+            <img src="https://img.xianghuanji.com/cms/51e33ff471e8bd8f7ae1dedac9b433064134.png"
+                lz-src="images/banner/2.jpg" width="640" height="260" />
+        </div>
     </div>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- <script src="https://cdn.bootcdn.net/ajax/libs/knockout/2.3.0/knockout-min.js"></script> -->
@@ -149,6 +168,8 @@
     <script src="./js/jquery.slider.js"></script>
     <script src="./js/jquery.pager.js"></script>
     <script src="./js/knockout.pager.js"></script>
+    <script src="./js/knockout.hight-light.js"></script>
+    <script src="./js/knockout.lazyLoad.js"></script>
     <script>
         $(function () {
             slider.init()
@@ -170,6 +191,9 @@
                     getList: function (pageNo) {
                         self.totalCount(100);
                     },
+
+                    title: ko.observable('测试一个高亮效果'),
+                    keyword: ko.observable('高亮'),
                 };
 
                 self.getList(1)
