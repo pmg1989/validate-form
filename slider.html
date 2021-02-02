@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-tap-highlight-color: transparent;
+            outline: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "microsoft yahei", Verdana, Arial, Helvetica, sans-serif;
+            color: #686868;
+            background-color: #fff;
+            -webkit-overflow-scrolling: touch;
+            margin: 0 auto;
+            width: 640px;
+        }
+
+        ol,
+        ul,
+        li {
+            list-style: none;
+        }
+
+        .slider-container {
+            width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slider-container ul.slider {
+            width: 1000%;
+        }
+
+        .slider-container ul.slider li {
+            width: 10%;
+            float: left;
+            margin-left: -10%;
+        }
+
+        .slider-container ul.slider li a img {
+            width: 100%;
+            /*height: auto;*/
+        }
+
+        .slider-container ul.slider li:first-child {
+            margin-left: 0;
+        }
+
+        .slider-container ul.dot {
+            text-align: center;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            overflow: hidden;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            margin-left: -50%;
+        }
+
+        .slider-container ul.dot li {
+            list-style-image: none;
+            list-style-type: none;
+            margin-left: 0;
+            display: -moz-inline-stack;
+            display: inline-block;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .slider-container ul.dot li {
+            text-indent: -1000px;
+            width: 8%;
+            margin: 0 3px;
+            height: 4px;
+            background-color: #fff;
+            filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
+            opacity: 0.4;
+            -webkit-border-radius: 2px;
+            border-radius: 2px;
+            -webkit-transition: all 0.25s ease-in;
+            transition: all 0.25s ease-in;
+        }
+
+        .slider-container ul.dot li.active {
+            filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+            opacity: 0.8;
+            -webkit-transform: scale(1.1, 1.1);
+            transform: scale(1.1, 1.1);
+        }
+
+        .wrap {
+            background-color: #edfbff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="slider-container">
+            <ul class="slider">
+                <li><a href="#"><img src="https://img.xianghuanji.com/cms/4ac67e660c585e6a8174d3f8d773e3c16200.png"
+                            lz-src="images/banner/3.png" width="640" height="260" /></a></li>
+                <li><a href="#"><img src="https://img.xianghuanji.com/cms/339b2bcc7878d380b1280657af3d8c943946.png"
+                            lz-src="images/banner/1.jpg" width="640" height="260" /></a>
+                </li>
+                <li><a href="#"><img src="https://img.xianghuanji.com/cms/51e33ff471e8bd8f7ae1dedac9b433064134.png"
+                            lz-src="images/banner/2.jpg" width="640" height="260" /></a></li>
+                <!-- <li><a href="#"><img src="/images/load.jpg" lz-src="images/banner/4.jpg" width="640" height="260" /></a>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./js/jquery.slider.js"></script>
+    <script>
+        $(function () {
+            slider.init()
+        })
+    </script>
+</body>
+
+</html>
