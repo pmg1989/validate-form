@@ -105,6 +105,20 @@
             background-color: #edfbff;
         }
     </style>
+    <style>
+        .pagination {
+            display: flex;
+        }
+
+        .pagination li {
+            padding: 10px 5px;
+        }
+
+        .pagination .active a {
+            color: #666;
+            text-decoration: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -122,12 +136,48 @@
                 </li> -->
             </ul>
         </div>
+
+        <div id="pager"></div>
+
+        <div
+            data-bind='component: { name: "pager", params: { count: totalCount, size: pageSize, no: curPage, btnCount: 4, show:getList } }'>
+        </div>
     </div>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/knockout/2.3.0/knockout-min.js"></script> -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
     <script src="./js/jquery.slider.js"></script>
+    <script src="./js/jquery.pager.js"></script>
+    <script src="./js/knockout.pager.js"></script>
     <script>
         $(function () {
             slider.init()
+
+            $('#pager').pager({
+                resultCount: 100,
+                btnCount: 5,
+                curPage: 1,
+            })
+
+            var viewModel = function () {
+
+                var self = {
+                    pageNo: ko.observable(0),
+                    curPage: ko.observable(1),
+                    pageSize: 10,
+                    totalCount: ko.observable(0),
+
+                    getList: function (pageNo) {
+                        self.totalCount(100);
+                    },
+                };
+
+                self.getList(1)
+
+                return self;
+            }
+
+            ko.applyBindings(new viewModel());
         })
     </script>
 </body>
