@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node 链表</title>
+</head>
+
+<body>
+    <script src="./js/Node.js"></script>
+    <script>
+        const nodeList = new NodeList()
+
+
+        nodeList.insert('first', 'head')
+        nodeList.insert('second', 'first')
+        nodeList.insert('last', 'second')
+
+        console.log(nodeList.find('head'), nodeList.find('first'), nodeList.find('second'), nodeList.find('last'))
+
+        console.log(nodeList.display())
+
+        console.log(nodeList.findPrev('second'))
+
+        console.log(nodeList.findLast())
+
+        // setTimeout(() => {
+        //     nodeList.remove('second')
+
+        //     console.log(nodeList.display())
+        // }, 3000)
+
+    </script>
+</body>
+
+</html>
