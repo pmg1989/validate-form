@@ -1,60 +1,60 @@
-#validate-form.js
+# validate-form.js
 
-##ÑÝÊ¾µØÖ·£º
+## æ¼”ç¤ºåœ°å€ï¼š
 https://pmg1989.github.io/validate-form
 
-##validate-form.jsÊÇÊ²Ã´?
-Ò»¸ö»ùÓÚjQuery/zepto.jsµÄ±íµ¥ÑéÖ¤²å¼þ£¬¿ÉÒÔÍê³É»ù±¾±íµ¥ÑéÖ¤ÒÔ¼°Òì²½ÇëÇóÑéÖ¤¹¦ÄÜ£¬²¢ÇÒ¹¦ÄÜ¿ÉÖ§³ÖÀ©Õ¹¡£
+## validate-form.jsæ˜¯ä»€ä¹ˆ?
+ä¸€ä¸ªåŸºäºŽjQuery/zepto.jsçš„è¡¨å•éªŒè¯æ’ä»¶ï¼Œå¯ä»¥å®ŒæˆåŸºæœ¬è¡¨å•éªŒè¯ä»¥åŠå¼‚æ­¥è¯·æ±‚éªŒè¯åŠŸèƒ½ï¼Œå¹¶ä¸”åŠŸèƒ½å¯æ”¯æŒæ‰©å±•ã€‚
 
-##validate-form.jsÓÐÄÄÐ©¹¦ÄÜ£¿
+## validate-form.jsæœ‰å“ªäº›åŠŸèƒ½ï¼Ÿ
 
-* ·½±ãÊ¹ÓÃµÄ`»ù±¾ÑéÖ¤`¹¦ÄÜ
-    *  ·Ç¿ÕÑéÖ¤¡¢ÓÊÏä¸ñÊ½ÑéÖ¤¡¢ÊÖ»úºÅÂë¸ñÊ½ÑéÖ¤¡¢Êý×ÖÑéÖ¤¡¢Êý×ÖºÍ×ÖÄ¸µÄ×éºÏ¡¢ÖÐÎÄÑéÖ¤
-    *  ÃÜÂëÑéÖ¤¡¢ÖÐ¹ú»¤ÕÕ¸ñÊ½ÑéÖ¤
-* Ö§³Ö`Òì²½ÇëÇóÑéÖ¤`¹¦ÄÜ
-* Ö§³Ö¿ÉÀ©Õ¹µÄ`ÌØÊâ¹¦ÄÜÑéÖ¤`¹¦ÄÜ
-* Ö§³Öform±íµ¥`ÕûÌå`ÑéÖ¤ÒÔ¼°input`µ¥¸ö`ÑéÖ¤
+* æ–¹ä¾¿ä½¿ç”¨çš„`åŸºæœ¬éªŒè¯`åŠŸèƒ½
+    *  éžç©ºéªŒè¯ã€é‚®ç®±æ ¼å¼éªŒè¯ã€æ‰‹æœºå·ç æ ¼å¼éªŒè¯ã€æ•°å­—éªŒè¯ã€æ•°å­—å’Œå­—æ¯çš„ç»„åˆã€ä¸­æ–‡éªŒè¯
+    *  å¯†ç éªŒè¯ã€ä¸­å›½æŠ¤ç…§æ ¼å¼éªŒè¯
+* æ”¯æŒ`å¼‚æ­¥è¯·æ±‚éªŒè¯`åŠŸèƒ½
+* æ”¯æŒå¯æ‰©å±•çš„`ç‰¹æ®ŠåŠŸèƒ½éªŒè¯`åŠŸèƒ½
+* æ”¯æŒformè¡¨å•`æ•´ä½“`éªŒè¯ä»¥åŠinput`å•ä¸ª`éªŒè¯
 
-##HTMLÄ£°åÅäÖÃ
+## HTMLæ¨¡æ¿é…ç½®
 ```html
 <form class="form" method="post" action="/">
     <div class="form-control">
-        <input id="phone" type="text" placeholder="ÇëÊäÈëÊÖ»úºÅ" check="required mobile"/>
-        <div class="message">ÇëÊäÈëÊÖ»úºÅ</div>
-        <span class="btn send-code">»ñÈ¡ÑéÖ¤Âë</span>
+        <input id="phone" type="text" placeholder="è¯·è¾“å…¥æ‰‹æœºå·" check="required mobile"/>
+        <div class="message">è¯·è¾“å…¥æ‰‹æœºå·</div>
+        <span class="btn send-code">èŽ·å–éªŒè¯ç </span>
     </div>
     <div class="form-control">
-    <input id="email" type="text" placeholder="ÇëÊäÈëÓÊÏä" check="required email" />
-        <div class="message">ÇëÊäÈëÓÊÏä</div>
+    <input id="email" type="text" placeholder="è¯·è¾“å…¥é‚®ç®±" check="required email" />
+        <div class="message">è¯·è¾“å…¥é‚®ç®±</div>
     </div>
     <div class="form-control">
-        <input id="num" type="text" placeholder="ÇëÊäÈëÊýÁ¿" check="required num" />
-        <div class="message">ÇëÊäÈëÊýÁ¿</div>
+        <input id="num" type="text" placeholder="è¯·è¾“å…¥æ•°é‡" check="required num" />
+        <div class="message">è¯·è¾“å…¥æ•°é‡</div>
     </div>
     <div class="form-control">
-        <input id="password1" type="password" placeholder="ÇëÊäÈëÃÜÂë" check="required pwd1 length" min="6" max="12" />
-        <div class="message">ÇëÊäÈëÃÜÂë</div>
+        <input id="password1" type="password" placeholder="è¯·è¾“å…¥å¯†ç " check="required pwd1 length" min="6" max="12" />
+        <div class="message">è¯·è¾“å…¥å¯†ç </div>
     </div>
     <div class="form-control">
-        <input id="password2" type="password" placeholder="ÇëÊäÈëÈ·ÈÏÃÜÂë" check="required pwd2" />
-        <div class="message">ÇëÊäÈëÈ·ÈÏÃÜÂë</div>
+        <input id="password2" type="password" placeholder="è¯·è¾“å…¥ç¡®è®¤å¯†ç " check="required pwd2" />
+        <div class="message">è¯·è¾“å…¥ç¡®è®¤å¯†ç </div>
     </div>
-    <input type="submit" class="btn btn-primary btn-block" value="×¢²á" />
+    <input type="submit" class="btn btn-primary btn-block" value="æ³¨å†Œ" />
 </form>
 ```
-##Form±íµ¥ÕûÌåÑéÖ¤
+## Formè¡¨å•æ•´ä½“éªŒè¯
 
 ```javascript
-//¶¨ÒåÑéÖ¤²ÎÊý¶ÔÏó
+//å®šä¹‰éªŒè¯å‚æ•°å¯¹è±¡
 var validateParams = {
-    //»Øµ÷º¯Êý£¬µ±Ç°±íµ¥ÑéÖ¤Í¨¹ýÒÔ¼°²»Í¨¹ý¶¼»áµ÷ÓÃ
+    //å›žè°ƒå‡½æ•°ï¼Œå½“å‰è¡¨å•éªŒè¯é€šè¿‡ä»¥åŠä¸é€šè¿‡éƒ½ä¼šè°ƒç”¨
     onChange: function (isValid, $elem, msg) {
         /*
-        isValid:µ±Ç°ÑéÖ¤ÊÇ·ñÍ¨¹ý£¬true£ºÍ¨¹ý£»false£º²»Í¨¹ý£»
-        $elem:µ±Ç°±»ÑéÖ¤µÄ±íµ¥ÔªËØ£¬jQuery¶ÔÏó£»
-        msg£ºÑéÖ¤Î´Í¨¹ýÊ±µÄ´íÎóÌáÊ¾
+        isValid:å½“å‰éªŒè¯æ˜¯å¦é€šè¿‡ï¼Œtrueï¼šé€šè¿‡ï¼›falseï¼šä¸é€šè¿‡ï¼›
+        $elem:å½“å‰è¢«éªŒè¯çš„è¡¨å•å…ƒç´ ï¼ŒjQueryå¯¹è±¡ï¼›
+        msgï¼šéªŒè¯æœªé€šè¿‡æ—¶çš„é”™è¯¯æç¤º
         */
-        //ÈçÏÂÊÇÑéÖ¤Í¨¹ýÒÔ¼°Î´Í¨¹ýÊ±µÄdom²Ù×÷
+        //å¦‚ä¸‹æ˜¯éªŒè¯é€šè¿‡ä»¥åŠæœªé€šè¿‡æ—¶çš„domæ“ä½œ
         if (isValid) {
             $elem.next().removeClass("error");
         } else {
@@ -62,24 +62,24 @@ var validateParams = {
         }
     }
 };
-//¶Ôform±íµ¥½øÐÐÑéÖ¤
+//å¯¹formè¡¨å•è¿›è¡ŒéªŒè¯
 var validFalg = $("form").ValidateForm(validateParams);
 /*
-validFalg:false,ÑéÖ¤Î´Í¨¹ý£¬ÎÞÐè´¦Àí£¬return false£»À¹±íµ¥Ìá½»¼´¿É
-validFalg:true,formÑéÖ¤Í¨¹ý£¬¿É½øÐÐ±íµ¥Ìá½»ÁË
+validFalg:false,éªŒè¯æœªé€šè¿‡ï¼Œæ— éœ€å¤„ç†ï¼Œreturn falseï¼›æ‹¦è¡¨å•æäº¤å³å¯
+validFalg:true,forméªŒè¯é€šè¿‡ï¼Œå¯è¿›è¡Œè¡¨å•æäº¤äº†
 */
 ```
 
-##inputµ¥¸öÑéÖ¤
+## inputå•ä¸ªéªŒè¯
 
 ```javascript
-//·¢ËÍÑéÖ¤Âë¿Ø¼þ°ó¶¨ÊÂ¼þ
+//å‘é€éªŒè¯ç æŽ§ä»¶ç»‘å®šäº‹ä»¶
 $('.send-code').sms({
-    mobile: $('#phone'),//´ýÑéÖ¤µÄinputÔªËØ
+    mobile: $('#phone'),//å¾…éªŒè¯çš„inputå…ƒç´ 
     /*
-    smsµÄ»Øµ÷º¯Êý
-    $ele:´ýÑéÖ¤µÄÔªËØ£¬jQuery¶ÔÏó£»
-    ´Ë»Øµ÷±ØÐëreturn Ò»¸öboolÀàÐÍµÄÖµ£¬true£ºÑéÖ¤Í¨¹ý£¬false£ºÑéÖ¤²»Í¨¹ý
+    smsçš„å›žè°ƒå‡½æ•°
+    $ele:å¾…éªŒè¯çš„å…ƒç´ ï¼ŒjQueryå¯¹è±¡ï¼›
+    æ­¤å›žè°ƒå¿…é¡»return ä¸€ä¸ªboolç±»åž‹çš„å€¼ï¼Œtrueï¼šéªŒè¯é€šè¿‡ï¼Œfalseï¼šéªŒè¯ä¸é€šè¿‡
     */
     validate: function ($ele) {
         return $ele.ValidateForm(validateParams);
@@ -87,22 +87,22 @@ $('.send-code').sms({
 });
 ```
 
-##ajaxÒì²½ÇëÇóÑéÖ¤
+## ajaxå¼‚æ­¥è¯·æ±‚éªŒè¯
 
-ajaxvalid£º±ØÌî²ÎÊý£¬checkÊôÐÔÖµ£¬±ØÐëÇÒÖ»ÄÜÎªajaxvalid£»
+ajaxvalidï¼šå¿…å¡«å‚æ•°ï¼Œcheckå±žæ€§å€¼ï¼Œå¿…é¡»ä¸”åªèƒ½ä¸ºajaxvalidï¼›
 
-ajaxurl:±ØÌî²ÎÊý£¬Òì²½ÇëÇóµÄºóÌ¨ÑéÖ¤½Ó¿Ú£¬¿É´øurl²ÎÊý£»
+ajaxurl:å¿…å¡«å‚æ•°ï¼Œå¼‚æ­¥è¯·æ±‚çš„åŽå°éªŒè¯æŽ¥å£ï¼Œå¯å¸¦urlå‚æ•°ï¼›
 
-ajaxtype:¿ÉÑ¡²ÎÊý£¬ÖµÎªpost/get,Ä¬ÈÏÖµÎªpost
+ajaxtype:å¯é€‰å‚æ•°ï¼Œå€¼ä¸ºpost/get,é»˜è®¤å€¼ä¸ºpost
 
 ```html
 <div class="form-control">
-    <input id="phone2" type="text" placeholder="ÇëÊäÈëÓÊÏä/ÊÖ»úºÅ"check="required mobile ajaxvalid" ajaxurl="http://www.cakeland.com/json.ashx?C=User&m=checkPhone" ajaxtype="post"/>
-    <div class="message">ÇëÊäÈëÓÊÏä/ÊÖ»úºÅ</div>
+    <input id="phone2" type="text" placeholder="è¯·è¾“å…¥é‚®ç®±/æ‰‹æœºå·"check="required mobile ajaxvalid" ajaxurl="http://www.cakeland.com/json.ashx?C=User&m=checkPhone" ajaxtype="post"/>
+    <div class="message">è¯·è¾“å…¥é‚®ç®±/æ‰‹æœºå·</div>
 </div>
 ```
 
-##¹ØÓÚ×÷Õß
+## å…³äºŽä½œè€…
 
 ```javascript
   var ihubo = {
@@ -111,8 +111,8 @@ ajaxtype:¿ÉÑ¡²ÎÊý£¬ÖµÎªpost/get,Ä¬ÈÏÖµÎªpost
   }
 ```
 
-##ÎÊÌâ·´À¡
-ÔÚÊ¹ÓÃÖÐÓÐÈÎºÎÎÊÌâ£¬»¶Ó­·´À¡¸øÎÒ£¬¿ÉÒÔÓÃÒÔÏÂÁªÏµ·½Ê½¸úÎÒ½»Á÷
+## é—®é¢˜åé¦ˆ
+åœ¨ä½¿ç”¨ä¸­æœ‰ä»»ä½•é—®é¢˜ï¼Œæ¬¢è¿Žåé¦ˆç»™æˆ‘ï¼Œå¯ä»¥ç”¨ä»¥ä¸‹è”ç³»æ–¹å¼è·Ÿæˆ‘äº¤æµ
 
-* ÓÊ¼þ(972401854@qq.com)
+* é‚®ä»¶(972401854@qq.com)
 * QQ: 972401854
